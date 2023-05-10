@@ -96,8 +96,10 @@
 							</a>
 						</div>
 						<div ng-class="{'has-comment-box':WidgetWall.SocialItems.userDetails.userId == null || WidgetWall.allowCreateThread,'has-group-header' : WidgetWall.allowFollowLeaveGroup}"
-							class="post-section backgroundColorTheme">
-							<div class="post-infinite-scroll" id="top">
+							class="post-section backgroundColorTheme" style="    display: block;
+							position: absolute;">
+							<div class="post-infinite-scroll" id="top"
+								style="display: block;position: static;">
 								<div>
 									<div class="head"
 										ng-show="WidgetWall.pinnedPost && !WidgetWall.SocialItems.isPrivateChat"
@@ -112,7 +114,8 @@
                                 border-bottom-right-radius: 15px;"
 									ng-repeat="post in WidgetWall.SocialItems.items">
 									<div class="plugin-banner">
-										<div ng-if="post.imageUrl.length > 0" class="plugin-slide text-center"
+										<div ng-if="post.imageUrl.length > 0"
+											class="plugin-slide text-center"
 											style="max-height: none !important; min-height: 300px;">
 											<a ng-init="setupImageList(post)">
 												<!-- <bf-image-list ng-if="post.imageListId"
@@ -139,7 +142,8 @@
 												<i class="material-icons-outlined"
 													aria-hidden="true">thumb_up_off_alt</i>
 												<br>
-												<span class="iconsTheme iconsFont">{{post.likes.length}}</span>
+												<span
+													class="iconsTheme iconsFont">{{post.likes.length}}</span>
 											</a>
 											<a style="position: absolute;
                                                 top: 50%;
@@ -176,8 +180,7 @@
                                                 text-align: center;"
 												class="likes social-icon ng-cloak"
 												ng-click="WidgetWall.showMoreOptions(post)">
-												<span
-													class="material-icons-outlined">more_horiz</span>
+												<i class="material-icons-outlined">more_horiz</i>
 											</a>
 											<a style="position: absolute;
                                                 top: 90%;
@@ -193,8 +196,7 @@
                                                 text-align: center;"
 												class="likes social-icon ng-cloak"
 												ng-click="WidgetWall.downloadImage(post)">
-												<span
-													class="material-icons-outlined">file_download</span>
+												<i class="material-icons-outlined">file_download</i>
 											</a>
 
 										</div>
@@ -338,9 +340,9 @@
 							class="add-message btn btn--fab btn--add btn-primary" id="addBtn"
 							ng-click="WidgetWall.openPostSection()"
 							on-touchend="WidgetWall.openPostSection()">
-							<svg xmlns="http://www.w3.org/2000/svg" style="fill: white !important;" height="16px" width="16px"
-								viewBox="0 0 24 24"  stroke="white" stroke-width="2"
-								stroke-linecap="round" stroke-linejoin="round">
+							<svg xmlns="http://www.w3.org/2000/svg" style="fill: white !important;"
+								height="16px" width="16px" viewBox="0 0 24 24" stroke="white"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<line x1="12" y1="5" x2="12" y2="19"></line>
 								<line x1="5" y1="12" x2="19" y2="12"></line>
 							</svg>

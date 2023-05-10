@@ -13,7 +13,7 @@
     "karma",
     "jasmine"
   ],
-  "author": "developer@buildfire.com",
+  "author": "masresha@nixcodeapps.com",
   "license": "ISC",
   "dependencies": {
     "@babel/core": "^7.15.8",

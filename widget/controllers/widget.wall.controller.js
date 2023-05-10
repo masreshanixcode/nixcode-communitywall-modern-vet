@@ -2,7 +2,8 @@
 
 (function (angular) {
     angular.module('socialPluginWidget')
-        .controller('WidgetWallCtrl', ['$scope', 'SocialDataStore', 'Modals', 'Buildfire', '$rootScope', 'Location', 'EVENTS', 'GROUP_STATUS', 'MORE_MENU_POPUP', 'FILE_UPLOAD', '$modal', 'SocialItems', '$q', '$anchorScroll', '$location', '$timeout', 'Util', 'SubscribedUsersData', function ($scope, SocialDataStore, Modals, Buildfire, $rootScope, Location, EVENTS, GROUP_STATUS, MORE_MENU_POPUP, FILE_UPLOAD, $modal, SocialItems, $q, $anchorScroll, $location, $timeout, util, SubscribedUsersData) {
+        .controller('WidgetWallCtrl', ['$scope', 'SocialDataStore', 'Modals', 'Buildfire', '$rootScope', 'Location', 'EVENTS', 'GROUP_STATUS', 'MORE_MENU_POPUP', 'FILE_UPLOAD', '$modal', 'SocialItems', '$q', '$anchorScroll', '$location', '$window', 'Util', 'SubscribedUsersData', 
+        function ($scope, SocialDataStore, Modals, Buildfire, $rootScope, Location, EVENTS, GROUP_STATUS, MORE_MENU_POPUP, FILE_UPLOAD, $modal, SocialItems, $q, $anchorScroll, $location, $window, util, SubscribedUsersData) {
             var WidgetWall = this;
 
             WidgetWall.userDetails = {};
@@ -1064,27 +1065,40 @@
                 });
 
             }
-            WidgetWall.downloadImage = function (post) {
+            WidgetWall.downloadImage = async function (post) {
                 console.log("like", post);
-                buildfire.services.fileSystem.fileManager.download(
-                    {
-                      uri: post.imageUrl[0],
-                      path: "/images",
-                      fileName: post.id + ".jpg",
-                    },
-                    (onProgress) => {
-                        console.log("onProgress" + JSON.stringify(onProgress));
-                    },
-                    (err, filePath) => {
-                      if (err) return console.error(err);
+                $window.open(post.imageUrl[0]);
+                // const image = await fetch(post.imageUrl[0])
+                // const imageBlog = await image.blob()
+                // const imageURL = URL.createObjectURL(imageBlog)
+                // const link = document.createElement('a')
+                // link.href = imageURL
+                // link.download = "imagess.jpeg"
+                // document.body.appendChild(link)
+                // link.click()
+                // document.body.removeChild(link)
+                // console.log(link)
+
+                // buildfire.services.fileSystem.fileManager.download(
+                //     {
+                //       uri: post.imageUrl[0],
+                //       path: "/images",
+                //       fileName: post.id + ".jpg",
+                //     },
+                //     (onProgress) => {
+                //         console.log("onProgress" + JSON.stringify(onProgress));
+                //     },
+                //     (err, filePath) => {
+                //       if (err) return console.error(err);
                   
-                      console.log("Downloaded File to ", filePath);
-                      buildfire.dialog.alert({
-                        message: `Downloaded File tog`, filePath,
-                    });
-                    }
-                  );
+                //       console.log("Downloaded File to ", filePath);
+                //       buildfire.dialog.alert({
+                //         message: `Downloaded File tog`, filePath,
+                //     });
+                //     }
+                //   );
             };
+
 
             WidgetWall.showMoreOptions = function (post) {
                 WidgetWall.modalPopupThreadId = post.id;
